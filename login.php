@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 1) {
         // Fetch the row
         $row = $result->fetch_assoc();
-        print_r($row);
+        // print_r($row);
 
         // Verify the password
         // if (password_verify($password, $row['Password'])) {
