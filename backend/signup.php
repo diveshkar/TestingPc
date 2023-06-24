@@ -1,15 +1,25 @@
 <?php
 include "Dbconnect.php";
 
+$request_data = file_get_contents('php://input');
+$data = json_decode($request_data, true);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Access the data using the $_POST superglobal
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $contactNumber = $_POST['contactNumber'];
-    $industry = $_POST['industry'];
-    $address = $_POST['address'];
-    $password = $_POST['password'];
-    $reenterPassword = $_POST['reenterPassword'];
+    // $username = $_POST['username'];
+    // $email = $_POST['email'];
+    // $contactNumber = $_POST['contactNumber'];
+    // $industry = $_POST['industry'];
+    // $address = $_POST['address'];
+    // $password = $_POST['password'];
+    // $reenterPassword = $_POST['reenterPassword'];
+    $username = $data['username'];
+    $email = $data['email'];
+    $contactNumber = $data['contactNumber'];
+    $industry = $data['industry'];
+    $address = $data['address'];
+    $password = $data['password'];
+    $reenterPassword = $data['reenterPassword'];
 
     // Validate the data
     $errors = [];
