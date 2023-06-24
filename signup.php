@@ -52,6 +52,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit;
     }
+    // Check if the username or email already exists in the database
+    $stmt = $mysqli->prepare("SELECT * FROM signup WHERE Username = ? OR Email = ?");
+    $stmt->bind_param("ss", $username, $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        echo "Username or email already exists. Please choose a different one.";
+        exit;
+    }
 
 
     // Prepare the SQL statement
