@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #f8f8f8;
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-item{
+    padding: 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .nav-item:hover{
+    background-color: rgb(247, 241, 253);
+  }
+
+  .navbar .nav-item .nav-icon{
+    width: 35px;
+    height: 35px;
+    
+  }
+
+  .navbar .nav-item .nav-list {
+    list-style-type: none;
+    margin-left: auto; /* Updated property to "auto" */
+    margin-right: 0;
+  }
+  
+  /* Additional class to align the list items to the right corner */
+  .navbar .nav-item .nav-list li {
+    text-align: right;
+  }
+
