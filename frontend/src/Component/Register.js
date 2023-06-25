@@ -24,8 +24,49 @@ function Register ()  {
       // Perform form submission logic or API call here
       let url = 'http://localhost/testingpc/backend/signup.php';
       console.log(formData);
-      axios.post(url , formData ).then(response=> alert(response.data)).catch(error=> alert(error));
+      // axios.post(url , formData ).then(response=> alert(response.data)).catch(error=> alert(error));
+      // axios.post(url, formData)
+      // .then(response => {
+      //   const data = response.data;
+      //   if (data.success) {
+      //     // User registered successfully
+      //     // Redirect to the login page
+      //     window.location.href = 'http://localhost:3000/login';
+      //     alert(data.message);
+      //   } else {
+      //     // Handle the error
+      //     console.log(data.message);
+      //   }
+      // })
+      // .catch(error => {
+      //   // Handle the error
+      //   console.log(error);
+      // });
+      axios.post(url, formData)
+    .then(response => {
+        if (response.data && response.data.success) {
+            // Registration successful, proceed with redirecting to the login page
+            window.location.href = '/login';
+        } else if (response.data && response.data.errors) {
+            // Registration failed, display validation errors
+            const errors = response.data.errors;
+            errors.forEach(error => {
+                alert(error);
+                // Display error message in the frontend UI
+            });
+        } else {
+            // Handle other cases where the response data is missing or unexpected
+            console.log('Unexpected response:', response);
+        }
+    })
+    .catch(error => {
+        console.log(error);
+        // Handle other errors, such as network errors
+    });
+
+
     }
+    
   return (
     <div>
     

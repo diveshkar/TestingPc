@@ -1,6 +1,9 @@
 <?php
 include "Dbconnect.php";
 
+ // Send the response back to the frontend
+ header('Content-Type: application/json');
+//get inputs from user
 $request_data = file_get_contents('php://input');
 $data = json_decode($request_data, true);
 
@@ -57,9 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // If there are validation errors, display them
     if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo $error . "<br>";
-        }
+        // foreach ($errors as $error) {
+        //     echo $error . "<br>";
+        // }
+        echo json_encode(array('errors' => $errors));
         exit;
     }
     // Check if the username or email already exists in the database
@@ -80,13 +84,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssssss", $username, $email, $contactNumber, $industry, $address, $password);
 
     // Execute the statement
+    // if ($stmt->execute()) {
+    //     // TODO: Provide a success response or redirect to a success page
+    //     echo "User registered successfully!";
+    //     // header("Location: http://localhost:3000/login/");
+    //     // echo '<script> window.location.href = "http://localhost:3000/login"; </script>';
+    //     exit;
+    // } else {
+    //     // TODO: Handle the error
+    //     echo "Error: " . $stmt->error;
+    // }
+    // After successful registration
     if ($stmt->execute()) {
-        // TODO: Provide a success response or redirect to a success page
-        echo "User registered successfully!";
+        // User registered successfully!
+        // Return a success response
+        $response = array(
+            'success' => true,
+            'message' => 'User registered successfully!'
+        );
     } else {
-        // TODO: Handle the error
-        echo "Error: " . $stmt->error;
+        // Handle the error
+        $response = array(
+            'success' => false,
+            'message' => 'Error: ' . $stmt->error
+        );
     }
+
+   
+    echo json_encode($response);
+    exit;
 
     // Close the statement and connection
     $stmt->close();
