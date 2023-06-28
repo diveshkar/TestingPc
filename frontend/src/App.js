@@ -17,7 +17,7 @@ import Login from './Component/Login';
         <Nav/>
       </div>
         <Routes>
-          <Route exact path ='/' element={<Homepage/>}/>
+          <Route exact path ='/home' element={<Homepage/>}/>
           <Route exact path ='/order' element={<Order/>}/>
           <Route exact path ='/purchase' element={<Purchase/>}/>
           <Route exact path ='/contact' element={<Contact/>}/>

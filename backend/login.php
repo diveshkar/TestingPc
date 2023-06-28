@@ -2,11 +2,16 @@
 session_start(); // Start the session
 
 include "Dbconnect.php"; // Include the database connection file
+// Send the response back to the frontend
+header('Content-Type: application/json');
+//get inputs from user
+$request_data = file_get_contents('php://input');
+$data = json_decode($request_data, true);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Access the data using the $_POST superglobal
-    $username_or_Email = $_POST['username_or_Email'];
-    $password = $_POST['password'];
+    $username_or_Email = $data['username_or_Email'];
+    $password = $data['password'];
 
     // Prepare the SQL statement
     $stmt = $mysqli->prepare("SELECT * FROM signup WHERE Username = ? OR Email = ?");
@@ -34,9 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['Username'] = $row['Username'];
             $_SESSION['Email'] = $row['Email'];
 
-            // Redirect to the home page or any other page
-            // header("Location: home.php");
-            echo "welcome to home";
+             // Send a success response
+            $response = [
+                'success' => true
+            ];
+            echo json_encode($response);
             exit;
         } else {
             // Password is incorrect

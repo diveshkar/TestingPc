@@ -13,7 +13,7 @@ const Nav = () => {
     <div>
       <nav className="navbar">
       
-        <Link to="/" className='nav-item'><img src={homeIcon} className='nav-icon' alt="Home-icon"/></Link>
+        <Link to="/home" className='nav-item'><img src={homeIcon} className='nav-icon' alt="Home-icon"/></Link>
         <Link to="/order" className='nav-item'><img src={labIcon} className='nav-icon' alt="flask-icon"/></Link>
         <Link to="/purchase" className='nav-item'><img src={purchaseIcon} className='nav-icon' alt="purchase-icon"/></Link>
         <Link to="/contact" className='nav-item'><img src={contactIcon} className='nav-icon' alt="contact-icon"/></Link>
