@@ -1,0 +1,174 @@
+.formLogin{
+    border-color: #aeacac;
+    border-width: 1px;
+    width: 70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(246, 249, 252);
+    padding-bottom: 40px;
+}
+.form-heading{
+    font-size: 32px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-weight: 600;
+   
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+section .imgBxLogin{
+    position: relative;
+    width: 50%;
+    height: 80%;
+}
+section .imgBxLogin:before{
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg,#e91e63,#03a9f4);
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+section .imgBxLogin img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .contentBxLogin{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin-top:80px;
+}
+  
+.social-icon-container{
+    background-color: rgb(233, 245, 255);
+}
+.social-icon{
+    width: 50px;
+    height: 50px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.input-fields-container{
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+    
+}
+.input-box{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-bottom: 12px;
+    margin-bottom: 36px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: rgb(246, 249, 252);
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+}
+.submit-button{
+    background-color: #0056ff;
+    padding: 12px 24px;
+    font-size: 18px;
+    color:white;
+    border:none;
+    margin-bottom: 20px;
+    border-radius: 24px;
+}
+.backSign{
+    color: #444343;
+    font-size: 14pt;
+}
+.backSignLink{
+    text-decoration: none;
+    color: blue;
+}
+.backSignLink:hover{
+    text-decoration: underline;
+    
+}
+
+@media screen and (max-width:1400px ) and (min-width:800px){
+    .form{
+        width:80%;
+    }
+    .social-icon{
+        width: 7%;
+        height: 7%;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+}
+@media screen and (max-width:800px){
+    .form{
+        width: 80%;
+        margin-top: 60px;
+        
+    }
+    
+
+    .contentBx .form .form-heading{
+    font-size: 24px;
+    padding-top: 56px;
+    padding-bottom: 16px;
+    font-weight: 600;
+    }
+    .social-icon{
+        width: 6%;
+        height: 6%;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .contentBx .form .input-fields-container{
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 40px;
+        padding-right: 40px;            
+    }
+    .contentBx .form .input-fields-container .input-box{
+        display: block;
+        font-size: 14px;
+        padding-bottom: 14px;
+        margin-bottom: 24px;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        background-color: rgb(246, 249, 252);
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+    }
+    .submit-button{
+        background-color: #0056ff;
+        padding: 12px 24px;
+        font-size: 16px;
+        color:white;
+        border:none;
+    }
+}
