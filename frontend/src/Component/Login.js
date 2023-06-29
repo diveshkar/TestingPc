@@ -1,9 +1,10 @@
 import React from 'react'
 import './login.css';
-import logImg from './images/login.jpg';
+// import logImg from './images/login.jpg';
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
+
 
 function Login ()  {
 
@@ -14,11 +15,11 @@ function Login ()  {
     });
   
     const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormData({ ...formData, [e.target.id]: e.target.value });
     };
   
     const handleSubmit = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       let url = 'http://localhost/testingpc/backend/login.php';
       axios.post(url , formData).then(function(response) {
         if(response.data.success) {
@@ -39,7 +40,7 @@ function Login ()  {
     
     <section>
       <div className="imgBxLogin">
-          <img src={logImg} alt="Form" />
+          {/* <img src={logImg} alt="Form" /> */}
       </div>
       <div className="contentBxLogin">
 
@@ -52,11 +53,11 @@ function Login ()  {
           <div className="inputBx">
           <input
             type="text"
-            id='email'
+            id='username_or_Email'
             name="email"
             value={formData.username_or_Emailemail} onChange={handleChange}
             className="input-box"
-            placeholder="Email"
+            placeholder="Username / Email"
             required
           />
           </div>
@@ -85,7 +86,8 @@ function Login ()  {
           />
           </div>
           <div className="backSign">
-            Don't have an account? <Link to="/register" className='backSignLink'>Sign up</Link>
+            Don't have an account? <Link to="/register" className='backSignLink'>Sign up</Link><br />
+            <Link to = "/forgotpassword">Forgot Password</Link>
           </div>
         </form>
       </div>

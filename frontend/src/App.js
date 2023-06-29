@@ -9,6 +9,7 @@ import Quotation from './Component/Quotation';
 import Report from './Component/Report';
 import Register from './Component/Register';
 import Login from './Component/Login';
+import Forgotpassword from './Component/Forgotpassword';
 
  function App() {
   return (
@@ -23,7 +24,7 @@ import Login from './Component/Login';
           <Route exact path ='/contact' element={<Contact/>}/>
           <Route exact path ='/quotation' element={<Quotation/>}/>
           <Route exact path ='/report' element={<Report/>}/>
-
+          <Route exact path ='/forgotpassword' element={<Forgotpassword/>}/>
           <Route exact path ='/register' element={<Register/>}/>
           <Route exact path ='/login' element={<Login/>}/>
         </Routes>
