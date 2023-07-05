@@ -1,6 +1,6 @@
 import React from 'react'
 import './login.css';
-// import logImg from './images/login.jpg';
+import logImg from './images/login.jpg';
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
@@ -40,7 +40,7 @@ function Login ()  {
     
     <section>
       <div className="imgBxLogin">
-          {/* <img src={logImg} alt="Form" /> */}
+          <img src={logImg} alt="Form" />
       </div>
       <div className="contentBxLogin">
 
