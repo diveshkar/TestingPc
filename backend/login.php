@@ -3,10 +3,7 @@ session_start(); // Start the session
 
 include "Dbconnect.php"; // Include the database connection file
 // Send the response back to the frontend
-header('Content-Type: application/json');
-//get inputs from user
-$request_data = file_get_contents('php://input');
-$data = json_decode($request_data, true);
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Access the data using the $_POST superglobal

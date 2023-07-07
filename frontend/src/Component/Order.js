@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './order.css';
 import orderImg from './images/order.jpg';
+import axios from 'axios';
 
 function Order() {
+  const [formdata , setFormdata] = useState({
+    tests: "",
+    parameters: "",
+    sampleName:"",
+    shelfLife: "",
+    storage:"",
+    sampleType:"",
+    hazardous:"",
+    sampleDisposition:"",
+    agree: false,
+  });
+  const Change = (e) => {
+    if (e.target.type === 'checkbox') {
+      setFormdata({ ...formdata, [e.target.id]: e.target.checked });
+    } else if (e.target.type === 'select-one') {
+      setFormdata({ ...formdata, tests: e.target.value });
+    } else {
+      setFormdata({ ...formdata, [e.target.id]: e.target.value });
+    }
+  };
+  const handleSubmit = (e) => {
+    //e.preventDefault();
+    let url = 'http://localhost/testingpc/backend/order.php';
+    axios.post(url , formdata).then(function(response) {
+      if(response.data.success) {
+        window.location.href = '/purchase';
+      }
+    })
+    .catch(function(error){
+      alert(error);
+    })
+    
+  }
   return (
     <div>
       <section>
@@ -13,11 +47,11 @@ function Order() {
         <div class="container mt-3">
   <h2>Select your test here!</h2>
   <br/>
-  <form>
+  <form onSubmit={handleSubmit}>
     {/*1st row start */}
     <div class="row">
       <div class="col">
-      <select id="tests" name="tests" className='form-control'>
+      <select id="tests" value = {formdata.tests} onChange={Change} name="tests" className='form-control'>
     <option value="DSC/Sample">DSC/Sample</option>
     <option value="DSC-Modulated">DSC-Modulated</option>
     <option value="FTIE-ATR">FTIE-ATR</option>
@@ -70,27 +104,27 @@ function Order() {
   </select>
       </div>
       <div class="col">
-        <input id='sample-name' type="text" className="form-control" placeholder="Enter Sample's name" name="sample-name"/>
+        <input id='sampleName' value={formdata.sampleName} onChange={Change} type="text" className="form-control" placeholder="Enter Sample's name" name="sample-name"/>
       </div>
     </div>
     <br/>
 {/*2nd row start */}
 <div class='row'>
   <div class='col'>
-  <input id='parameters' type="text" className="form-control" placeholder="Enter Test Parameters" name="parameters"/>
+  <input id='parameters'value={formdata.parameters} onChange={Change} type="text" className="form-control" placeholder="Enter Test Parameters" name="parameters"/>
   </div>
   <div class='col'>
-  <input id='shelf-life' type="text" className="form-control" placeholder="Enter Sample Shelf Life" name="shelf-life"/>
+  <input id='shelfLife' value={formdata.shelfLife} onChange={Change} type="text" className="form-control" placeholder="Enter Sample Shelf Life" name="shelf-life"/>
   </div>
 </div>
 <br/>
 {/*3rd row start */}
 <div class='row'>
   <div class='col'>
-  <input id='storage' type="text" className="form-control" placeholder="Enter Sample storage condition" name="storage"/>
+  <input id='storage' value={formdata.storage} onChange={Change} type="text" className="form-control" placeholder="Enter Sample storage condition" name="storage"/>
   </div>
   <div class='col'>
-  <input id='sample-type' type="text" className="form-control" placeholder="Sample type (Organic/Inorganic/Polymer/Other)" name="sample-type"/>
+  <input id='sampleType' value={formdata.sampleType} onChange={Change} type="text" className="form-control" placeholder="Sample type (Organic/Inorganic/Polymer/Other)" name="sample-type"/>
   </div>
 </div>
 <br/>
@@ -98,10 +132,10 @@ function Order() {
 {/*4th row start */}
 <div class='row'>
   <div class='col'>
-  <input id='hazardous' type="text" className="form-control" placeholder="Known hazardous of the sample (Organic/Inorganic/Polymer/Other) " name="hazardous"/>
+  <input id='hazardous' value={formdata.hazardous} onChange={Change} type="text" className="form-control" placeholder="Known hazardous of the sample (Organic/Inorganic/Polymer/Other) " name="hazardous"/>
   </div>
   <div class='col'>
-  <input id='sample-disposition' type="text" className="form-control" placeholder="Sample Disposition" name="sample-disposition"/>
+  <input id='sampleDisposition' value={formdata.sampleDisposition} onChange={Change} type="text" className="form-control" placeholder="Sample Disposition" name="sample-disposition"/>
   </div>
 </div>
 <br/>
@@ -110,13 +144,13 @@ function Order() {
 <div class='row'>
   <div class='col'>
   <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="agree" name="agree" value="agree"/>
+      <input type="checkbox" checked = {formdata.agree} onChange={Change} class="form-check-input" id="agree" name="agree" />
       <label class="form-check-label" for="check1">I clearly mentioned the test information & I agree to the terms and conditions</label>
     </div>
   </div>
 <br/>
 </div>
-<input type="submit" class="btn-submit-order" value="Submit"></input>
+<input type="submit"  class="btn-submit-order" value="Submit"></input>
   </form>
 </div>
         </div>
