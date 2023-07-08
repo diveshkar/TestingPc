@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Nav from './Component/Nav';
 import Homepage from './Component/Homepage';
 import Order from './Component/Order';
+import Payment from './Component/Payment';
 import Purchase from './Component/Purchase';
 import Contact from './Component/Contact';
 import Quotation from './Component/Quotation';
@@ -20,6 +21,7 @@ import Forgotpassword from './Component/Forgotpassword';
         <Routes>
           <Route exact path ='/home' element={<Homepage/>}/>
           <Route exact path ='/order' element={<Order/>}/>
+          <Route exact path ='/payment' element={<Payment/>}/>
           <Route exact path ='/purchase' element={<Purchase/>}/>
           <Route exact path ='/contact' element={<Contact/>}/>
           <Route exact path ='/quotation' element={<Quotation/>}/>
