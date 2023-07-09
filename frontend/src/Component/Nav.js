@@ -7,6 +7,7 @@ import purchaseIcon from './images/shopping-bag.png';
 import contactIcon from './images/contact-us.png';
 import quotationIcon from './images/quotation.png';
 import reportIcon from './images/clipboard.png';
+import paymentIcon from './images/payment.png';
 
 const Nav = () => {
   const navigate = useNavigate();
