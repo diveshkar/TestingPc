@@ -46,17 +46,12 @@ const Nav = () => {
         <Link to="/report" className="nav-item">
           <img src={reportIcon} className="nav-icon" alt="report-icon" />
         </Link>
-        <ul className="nav-list">
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>Logout</button>
-          </li>
-        </ul>
+        <Link to="/payment" className="nav-item">
+          <img src={paymentIcon} className="nav-icon" alt="payment-icon" />
+        </Link>
+        <Link to="/register" className='nav-icon'>Register</Link>
+        <Link to="/login" className='nav-icon'>Login</Link>
+        <button onClick={handleLogout} className='nav-icon'>Logout</button>
       </nav>
     </div>
   );
