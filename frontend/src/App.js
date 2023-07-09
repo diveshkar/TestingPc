@@ -12,6 +12,8 @@ import Login from './Component/Login';
 import Forgotpassword from './Component/Forgotpassword';
 
  function App() {
+  
+
   return (
     <div>
       <div className="App">
@@ -28,6 +30,8 @@ import Forgotpassword from './Component/Forgotpassword';
           <Route exact path ='/register' element={<Register/>}/>
           <Route exact path ='/login' element={<Login/>}/>
         </Routes>
+
+        
       
      
     </div>

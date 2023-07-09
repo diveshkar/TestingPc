@@ -1,99 +1,119 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './login.css';
 import logImg from './images/login.jpg';
-import {Link} from 'react-router-dom';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import Order from './Order';
 
+function Login() {
+  const [formData, setFormData] = useState({
+    username_or_Email: '',
+    password: ''
+  });
 
-function Login ()  {
-
-    const [formData, setFormData] = useState({
-      username_or_Email:'',
-      password:''
-      
-    });
   
-    const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.id]: e.target.value });
+
+  // const [sessionToken, setSessionToken] = useState('');
+
+  
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+
+    const headers = {
+      'Content-Type': 'application/json'
     };
-  
-    const handleSubmit = (e) => {
-      // e.preventDefault();
-      let url = 'http://localhost/testingpc/backend/login.php';
-      axios.post(url , formData).then(function(response) {
-        if(response.data.success) {
-          window.location.href = '/order';
-          alert("login succed");
+
+    let url = 'http://localhost/testingpc/backend/login.php';
+    axios
+      .post(url, formData, { headers })
+      .then(function (response) {
+        if (response.data.success) {
+          // Set the session token in document.cookie
+          // document.cookie = `sessionToken=${response.data.sessionToken}; path=/`;
+          // Store session token in localStorage
+          document.cookie = 'sessionToken=' + response.data.sessionToken + '; path = /';
+          // localStorage.setItem('cookie', document.cookie);
+          
+          // document.cookie = localStorage.getItem('sessionToken');
+          window.location.reload();
+          // console.log(document.cookie);
+
+          // Update sessionToken state
+          // setSessionToken(response.data.sessionToken);
+          
         }
       })
-      .catch(function(error){
+      .catch(function (error) {
         alert(error);
-      })
-      
-    }
-  
+      });
+  };
 
-    
-  return (
-    <div>
-    
-    <section>
-      <div className="imgBxLogin">
-          <img src={logImg} alt="Form" />
+  if (document.cookie.includes('sessionToken')) {
+    window.location.href = '/order';
+  } else {
+    return (
+      <div>
+        <section>
+          <div className="imgBxLogin">
+            <img src={logImg} alt="Form" />
+          </div>
+          <div className="contentBxLogin">
+            <form className="formLogin" onSubmit={handleSubmit}>
+              <p className="form-heading">Login</p>
+
+              <div className="inputBx">
+                <input
+                  type="text"
+                  id="username_or_Email"
+                  name="email"
+                  value={formData.username_or_Email}
+                  onChange={handleChange}
+                  className="input-box"
+                  placeholder="Username / Email"
+                  required
+                />
+              </div>
+
+              <div className="inputBx">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="input-box"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+
+              <div className="inputBx">
+                <input
+                  type="submit"
+                  name="submit-btn"
+                  value="Login"
+                  className="submit-button"
+                />
+              </div>
+              <div className="backSign">
+                Don't have an account?{' '}
+                <Link to="/register" className="backSignLink">
+                  Sign up
+                </Link>
+                <br />
+                <Link to="/forgotpassword">Forgot Password</Link>
+              </div>
+            </form>
+          </div>
+        </section>
       </div>
-      <div className="contentBxLogin">
-
-       <form className="formLogin" onSubmit={handleSubmit}>
-        <p className="form-heading">Login</p>
-        
-
-        
-
-          <div className="inputBx">
-          <input
-            type="text"
-            id='username_or_Email'
-            name="email"
-            value={formData.username_or_Emailemail} onChange={handleChange}
-            className="input-box"
-            placeholder="Username / Email"
-            required
-          />
-          </div>
-
-
-          
-          <div className="inputBx">
-          <input
-            type="password"
-            id='password'
-            name="password"
-            value={formData.password} onChange={handleChange}
-            className="input-box"
-            placeholder="Password"
-            required
-          />
-          </div>
-
-          
-          <div className="inputBx">
-          <input
-            type="submit"
-            name="sumbit-btn"
-            value="Login"
-            className="submit-button"
-          />
-          </div>
-          <div className="backSign">
-            Don't have an account? <Link to="/register" className='backSignLink'>Sign up</Link><br />
-            <Link to = "/forgotpassword">Forgot Password</Link>
-          </div>
-        </form>
-      </div>
-     </section>
-    </div>
-  );
+    );
+  }
 }
 
-export default Login
+export default Login;

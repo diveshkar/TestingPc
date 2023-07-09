@@ -1,11 +1,18 @@
 import React from 'react'
+// import Homepage from './Homepage'
 
 function Report() {
-  return (
-    <div>
-      Report
-    </div>
-  )
+  if(document.cookie.includes('sessionToken')){
+    return (
+      <div>
+        Report
+      </div>
+    )
+  }else{
+    // <Homepage />
+    window.location.href = '/home';
+  }
+ 
 }
 
 export default Report

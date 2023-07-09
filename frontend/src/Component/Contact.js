@@ -1,11 +1,18 @@
 import React from 'react'
+// import Homepage from './Homepage'
 
 function Contact() {
-  return (
-    <div>
-      Contact
-    </div>
-  )
+  if(document.cookie.includes('sessionToken')){
+    return (
+      <div>
+        Contact
+      </div>
+    )
+  }else{
+    // <Homepage />
+    window.location.href = '/home';
+  }
+  
 }
 
 export default Contact

@@ -1,11 +1,18 @@
 import React from 'react'
+// import Homepage from './Homepage'
 
 function Quotation() {
-  return (
-    <div>
-      Quotation
-    </div>
-  )
+  if(document.cookie.includes('sessionToken')){
+    return (
+      <div>
+        Quotation
+      </div>
+    )
+  }else{
+    // <Homepage />
+    window.location.href = '/home';
+  }
+  
 }
 
 export default Quotation

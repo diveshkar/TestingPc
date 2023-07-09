@@ -2,8 +2,6 @@
 session_start(); // Start the session
 
 include "Dbconnect.php"; // Include the database connection file
-// Send the response back to the frontend
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Access the data using the $_POST superglobal
@@ -18,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Execute the statement
     $stmt->execute();
-    
 
     // Get the result
     $result = $stmt->get_result();
@@ -26,19 +23,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 1) {
         // Fetch the row
         $row = $result->fetch_assoc();
-        // print_r($row);
 
         // Verify the password
-        // if (password_verify($password, $row['Password'])) {
         if ($password === $row['Password']) {
             // Password is correct
             // Store user data in session variables
             $_SESSION['Username'] = $row['Username'];
             $_SESSION['Email'] = $row['Email'];
 
-             // Send a success response
+            $sessionToken = bin2hex(random_bytes(16));
+
+            // Set the session token as a cookie
+            setcookie('sessionToken', $sessionToken, time() + (86400 * 30), '/'); // Cookie valid for 30 days
+
+            // Send a success response
             $response = [
-                'success' => true
+                'success' => true,
+                'sessionToken' => $sessionToken
             ];
             echo json_encode($response);
             exit;
@@ -61,4 +62,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Close the connection
 $mysqli->close();
+
 ?>
