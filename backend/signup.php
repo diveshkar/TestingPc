@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // }
     // After successful registration
     if ($stmt->execute()) {
+        
         // User registered successfully!
         // Return a success response
         $response = array(

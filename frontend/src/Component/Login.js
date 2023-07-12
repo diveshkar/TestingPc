@@ -23,6 +23,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     // e.preventDefault();
+    // console.log(document.cookie);
 
     const headers = {
       'Content-Type': 'application/json'
@@ -41,7 +42,7 @@ function Login() {
           
           // document.cookie = localStorage.getItem('sessionToken');
           window.location.reload();
-          // console.log(document.cookie);
+          
 
           // Update sessionToken state
           // setSessionToken(response.data.sessionToken);
