@@ -10,7 +10,7 @@ function Report() {
     )
   }else{
     // <Homepage />
-    window.location.href = '/home';
+    window.location.href = '/Home';
   }
  
 }

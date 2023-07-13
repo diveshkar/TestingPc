@@ -22,7 +22,8 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
+    console.log(formData);
     // console.log(document.cookie);
 
     const headers = {
@@ -33,6 +34,7 @@ function Login() {
     axios
       .post(url, formData, { headers })
       .then(function (response) {
+        console.log(response.data);
         if (response.data.success) {
           // Set the session token in document.cookie
           // document.cookie = `sessionToken=${response.data.sessionToken}; path=/`;

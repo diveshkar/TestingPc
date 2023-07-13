@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 
 //get inputs from user
 $request_data = file_get_contents('php://input');
-$data = $request_data;
+$data = json_decode($request_data, TRUE);
 
 // Database connection details
 $host = 'localhost';

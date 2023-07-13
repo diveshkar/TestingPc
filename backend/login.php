@@ -1,10 +1,11 @@
 <?php
 session_start(); // Start the session
 
-include "Dbconnect.php"; // Include the database connection file
+require "Dbconnect.php"; // Include the database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Access the data using the $_POST superglobal
+    // echo "hi";
     $username_or_Email = $data['username_or_Email'];
     $password = $data['password'];
 
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'success' => true,
                 'sessionToken' => $sessionToken
             ];
+            header('Content-Type: application/json');
             echo json_encode($response);
             exit;
         } else {
