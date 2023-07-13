@@ -20,7 +20,7 @@ function Register ()  {
     };
 
     const handleSubmit = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       // Perform form submission logic or API call here
       let url = 'http://localhost/testingpc/backend/signup.php';
       console.log(formData);
@@ -46,8 +46,10 @@ function Register ()  {
     .then(response => {
         if (response.data && response.data.success) {
             // Registration successful, proceed with redirecting to the login page
+            alert(response.data.message);
             window.location.href = '/login';
-        } else if (response.data && response.data.errors) {
+            
+        } else if (!response.data.success && response.data.errors) {
             // Registration failed, display validation errors
             const errors = response.data.errors;
             errors.forEach(error => {

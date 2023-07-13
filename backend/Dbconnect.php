@@ -5,10 +5,11 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header('Content-Type: application/json');
+// header('Content-Type': 'multipart/form-data');
 
 //get inputs from user
 $request_data = file_get_contents('php://input');
-$data = json_decode($request_data, true);
+$data = json_decode($request_data, TRUE);
 
 // Database connection details
 $host = 'localhost';

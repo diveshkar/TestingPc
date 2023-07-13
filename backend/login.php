@@ -1,32 +1,26 @@
 <?php
 session_start(); // Start the session
 
-include "Dbconnect.php"; // Include the database connection file
+require "Dbconnect.php"; // Include the database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Access the data using the $_POST superglobal
     $username_or_Email = $data['username_or_Email'];
     $password = $data['password'];
 
     // Prepare the SQL statement
-    $stmt = $mysqli->prepare("SELECT * FROM signup WHERE Username = ? OR Email = ?");
+    $sql = "SELECT * FROM signup WHERE Username = '$username_or_Email' OR Email = '$username_or_Email'";
 
-    // Bind the parameters
-    $stmt->bind_param("ss", $username_or_Email, $username_or_Email);
+    // Execute the query
+    $result = $mysqli->query($sql);
 
-    // Execute the statement
-    $stmt->execute();
-
-    // Get the result
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        // Fetch the row
+    if ($result && $result->num_rows === 1) {
         $row = $result->fetch_assoc();
 
-        // Verify the password
+        // Verify the password using a secure password hashing algorithm
+        // Replace this with your preferred password hashing method (e.g., bcrypt)
         if ($password === $row['Password']) {
             // Password is correct
+
             // Store user data in session variables
             $_SESSION['Username'] = $row['Username'];
             $_SESSION['Email'] = $row['Email'];
@@ -34,33 +28,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sessionToken = bin2hex(random_bytes(16));
 
             // Set the session token as a cookie
-            setcookie('sessionToken', $sessionToken, time() + (86400 * 30), '/'); // Cookie valid for 30 days
+            setcookie('sessionToken', $sessionToken, time() + (86400), '/'); // Cookie valid for 30 days
 
             // Send a success response
             $response = [
                 'success' => true,
-                'sessionToken' => $sessionToken
+                'sessionToken' => $sessionToken,
+                'successMessage' => "LOGIN SUCCESS"
             ];
+            header('Content-Type: application/json');
             echo json_encode($response);
             exit;
         } else {
-            // Password is incorrect
-            echo "Incorrect username/email or password.";
+            // Incorrect password
+            $response = [
+                'success' => false,
+                'errorMessage' => 'Incorrect password.'
+            ];
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
         }
     } else {
         // No matching user found
-        echo "Incorrect username/email or password.";
+        $response = [
+            'success' => false,
+            'errorMessage' => 'Incorrect username/email.'
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit;
     }
-
-    // Close the statement
-    $stmt->close();
 } else {
-    // Neither POST nor GET method is used
-    // Handle the unsupported request method
-    echo "Unsupported request method!";
+    // Unsupported request method
+    $response = [
+        'success' => false,
+        'errorMessage' => 'Unsupported request method!'
+    ];
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
 }
 
 // Close the connection
 $mysqli->close();
+
 
 ?>
