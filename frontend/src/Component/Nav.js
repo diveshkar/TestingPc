@@ -49,9 +49,11 @@ const Nav = () => {
         <Link to="/payment" className="nav-item">
           <img src={paymentIcon} className="nav-icon" alt="payment-icon" />
         </Link>
-        <Link to="/register" className='nav-icon'>Register</Link>
-        <Link to="/login" className='nav-icon'>Login</Link>
-        <button onClick={handleLogout} className='nav-icon'>Logout</button>
+        <div className="nav-icon-container">
+        <Link to="/register" className='nav-icon-reg'>Register</Link>
+        <Link to="/login" className='nav-icon-reg'>Login</Link>
+        <button onClick={handleLogout} className='nav-icon-logout'>Logout</button>
+        </div>
       </nav>
     </div>
   );

@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
+import "./home.css";
 
 function Homepage() {
   return (
     <div>
       <div className="container">
         <div className="content">
-          Homepage1
+          
         </div>
       </div>
-      
     </div>
   );
 }
