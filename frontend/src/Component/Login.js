@@ -23,7 +23,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     // console.log(document.cookie);
 
     const headers = {
@@ -34,12 +34,13 @@ function Login() {
     axios
       .post(url, formData, { headers })
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           // Set the session token in document.cookie
           // document.cookie = `sessionToken=${response.data.sessionToken}; path=/`;
           // Store session token in localStorage
           document.cookie = 'sessionToken=' + response.data.sessionToken + '; path = /';
+          alert(response.data.successMessage);
           // localStorage.setItem('cookie', document.cookie);
           
           // document.cookie = localStorage.getItem('sessionToken');
