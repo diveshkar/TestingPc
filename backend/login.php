@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sessionToken = bin2hex(random_bytes(16));
 
             // Set the session token as a cookie
-            setcookie('sessionToken', $sessionToken, time() + (86400), '/'); // Cookie valid for 30 days
+            setcookie('sessionToken', $sessionToken, time() + (86400), '/'); // Cookie valid for 1 days
 
             // Send a success response
             $response = [

@@ -51,6 +51,9 @@ function Login() {
           // setSessionToken(response.data.sessionToken);
           
         }
+        else if (!response.data.success){
+          alert(response.data.errorMessage);
+        }
       })
       .catch(function (error) {
         alert(error);
