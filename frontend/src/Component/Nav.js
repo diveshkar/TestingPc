@@ -8,6 +8,8 @@ import contactIcon from './images/contact-us.png';
 import quotationIcon from './images/quotation.png';
 import reportIcon from './images/clipboard.png';
 import paymentIcon from './images/payment.png';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ const Nav = () => {
       
       <nav className="navbar">
         <Link to="/home" className="nav-item">
-          <img src={homeIcon} className="nav-icon" alt="Home-icon" />
+          <img src={homeIcon} className="nav-icon" alt="Home-icon" />          
         </Link>
         <Link to="/order" className="nav-item">
           <img src={labIcon} className="nav-icon" alt="flask-icon" />
