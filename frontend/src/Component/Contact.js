@@ -13,7 +13,7 @@ function Contact() {
     )
   }else{
     // <Homepage />
-    window.location.href = '/home';
+    window.location.href = '/';
   }
   
 }

@@ -33,8 +33,8 @@ const Nav = () => {
       
       <nav className="navbar">
         <img src={testingpc} alt="testingpc-logo" className="nav-item-logo" />
-        <Link to="/home" className="nav-item">
-          <img src={homeIcon} className="nav-icon" alt="Home-icon" />          
+        <Link to="/" className="nav-item">
+          <img src={homeIcon} className="nav-icon" alt="Home-icon" />                    
         </Link>
         <Link to="/order" className="nav-item">
           <img src={labIcon} className="nav-icon" alt="flask-icon" />

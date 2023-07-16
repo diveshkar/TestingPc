@@ -23,7 +23,6 @@ import Forgotpassword from './Component/Forgotpassword';
       </div>
         <Routes>
           <Route exact path ='/' element={<Homepage/>}/>
-          <Route exact path ='/home' element={<Homepage/>}/>
           <Route exact path ='/order' element={<Order/>}/>
           <Route exact path ='/payment' element={<Payment/>}/>
           <Route exact path ='/purchase' element={<Purchase/>}/>
