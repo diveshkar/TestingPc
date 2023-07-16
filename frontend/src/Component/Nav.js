@@ -18,7 +18,9 @@ const Nav = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('sessionToken');
-    localStorage.clear();
+    localStorage.removeItem('Username');
+    localStorage.removeItem('Email');
+    localStorage.removeItem('industry');
     // Clear the session token from document.cookie
     document.cookie = 'sessionToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 

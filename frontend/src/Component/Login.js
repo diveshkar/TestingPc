@@ -22,7 +22,7 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // console.log(formData);
     // console.log(document.cookie);
 

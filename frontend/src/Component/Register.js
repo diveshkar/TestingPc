@@ -24,31 +24,12 @@ function Register ()  {
       // Perform form submission logic or API call here
       let url = 'http://localhost/testingpc/backend/signup.php';
       console.log(formData);
-      // axios.post(url , formData ).then(response=> alert(response.data)).catch(error=> alert(error));
-      // axios.post(url, formData)
-      // .then(response => {
-      //   const data = response.data;
-      //   if (data.success) {
-      //     // User registered successfully
-      //     // Redirect to the login page
-      //     window.location.href = 'http://localhost:3000/login';
-      //     alert(data.message);
-      //   } else {
-      //     // Handle the error
-      //     console.log(data.message);
-      //   }
-      // })
-      // .catch(error => {
-      //   // Handle the error
-      //   console.log(error);
-      // });
       axios.post(url, formData)
     .then(response => {
         if (response.data && response.data.success) {
             // Registration successful, proceed with redirecting to the login page
             alert(response.data.message);
-            window.location.href = '/login';
-            
+            window.location.href = '/login';            
         } else if (!response.data.success && response.data.errors) {
             // Registration failed, display validation errors
             const errors = response.data.errors;
