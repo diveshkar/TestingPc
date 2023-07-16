@@ -1,5 +1,6 @@
 import React, {useState } from 'react';
 import axios from 'axios';
+import './purchase.css';
 
 function Purchase() {
   const [orders, setOrders] = useState([]);
@@ -24,9 +25,9 @@ if(document.cookie.includes('sessionToken')){
   return (
     <div>
       <h2>Purchase History</h2>
-      <table>
+      <table className="table">
         <thead>
-          <tr>
+          <tr className='font'>
             <th>Order ID</th>
             <th>Username</th>
             <th>Tests</th>
