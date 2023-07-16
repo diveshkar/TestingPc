@@ -30,7 +30,7 @@ const Nav = () => {
     <div>
       
       <nav className="navbar">
-        <Link to="/home" className="nav-item">
+        <Link to="/" className="nav-item">
           <img src={homeIcon} className="nav-icon" alt="Home-icon" />          
         </Link>
         <Link to="/order" className="nav-item">

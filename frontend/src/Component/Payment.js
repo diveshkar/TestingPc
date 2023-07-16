@@ -52,7 +52,7 @@ function Payment() {
       </div>
     );
   } else {
-    window.location.href = '/home';
+    window.location.href = '/';
   }
 }
 

@@ -26,13 +26,19 @@ function Order() {
     }
   };
   const handleSubmit = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     let url = 'http://localhost/testingpc/backend/order.php';
-    axios.post(url , formdata).then(function(response) {
+    axios.post(url , {
+      formdata: formdata,
+      Username: localStorage.getItem('Username'),
+      Email: localStorage.getItem('Email')
+    }).then(function(response) {
+      console.log(response);
       if(response.data.success) {
         // window.location.href = '/purchase';
         window.alert("order submited");
         // console.log(formdata);
+        window.location.reload();
       }
     })
     .catch(function(error){
@@ -57,6 +63,7 @@ function Order() {
       <div class="row">
         <div class="col">
         <select id="tests" value = {formdata.tests} onChange={Change} name="tests" className='form-control'>
+      <option>Select tests</option>
       <option value="DSC/Sample">DSC/Sample</option>
       <option value="DSC-Modulated">DSC-Modulated</option>
       <option value="FTIE-ATR">FTIE-ATR</option>
@@ -165,7 +172,7 @@ function Order() {
     )
 }else {
   // <Homepage />
-  window.location.href = '/home';
+  window.location.href = '/';
 }
 }
 export default Order;

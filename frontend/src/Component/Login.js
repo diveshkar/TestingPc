@@ -27,29 +27,25 @@ function Login() {
     // console.log(document.cookie);
 
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "withCredentials": true,
     };
 
     let url = 'http://localhost/testingpc/backend/login.php';
     axios
       .post(url, formData, { headers })
       .then(function (response) {
-        // console.log(response.data);
+        console.log(response.data.sessionusername);
         if (response.data.success) {
-          // Set the session token in document.cookie
-          // document.cookie = `sessionToken=${response.data.sessionToken}; path=/`;
-          // Store session token in localStorage
+         const  x = response.data.sessionusername;
+         const y = response.data.sessionemail;
+         let param = "username="+x+"&useremail="+y;
+          
           document.cookie = 'sessionToken=' + response.data.sessionToken + '; path = /';
+          localStorage.setItem('Username',x);
+          localStorage.setItem('Email',y);
           alert(response.data.successMessage);
-          // localStorage.setItem('cookie', document.cookie);
-          
-          // document.cookie = localStorage.getItem('sessionToken');
-          window.location.reload();
-          
-
-          // Update sessionToken state
-          // setSessionToken(response.data.sessionToken);
-          
+          window.location = "http://localhost/testingpc/backend/ab.php?"+param;  
         }
         else if (!response.data.success){
           alert(response.data.errorMessage);
