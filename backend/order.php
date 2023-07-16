@@ -131,10 +131,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'discounted_price' => $discounted_price,
         ] 
     ];
-
+    $current_time = date('Y-m-d H:i:s');
     // Save the quotation to the database.
-    $stmt = $mysqli->prepare("INSERT INTO orders (username, email, tests, parameters, sampleName, shelfLife, storage, sampleType, hazardous, sampleDisposition, agree, total_price, discounted_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssssiii", $data['Username'], $data['Email'], $tests, $parameters, $sampleName, $shelfLife, $storage, $sampleType, $hazardous, $sampleDisposition, $agree, $total_price, $discounted_price);
+    $stmt = $mysqli->prepare("INSERT INTO orders (username, email, tests, parameters, sampleName, shelfLife, storage, sampleType, hazardous, sampleDisposition, agree, total_price, discounted_price, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssssiiis", $data['Username'], $data['Email'], $tests, $parameters, $sampleName, $shelfLife, $storage, $sampleType, $hazardous, $sampleDisposition, $agree, $total_price, $discounted_price, $current_time);
     $stmt->execute();
 
     // Send the quotation to the client.
