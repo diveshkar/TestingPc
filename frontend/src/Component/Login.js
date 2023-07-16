@@ -36,6 +36,7 @@ function Login() {
       .then(function (response) {
         // console.log(response.data);
         if (response.data.success) {
+          
           // Set the session token in document.cookie
           // document.cookie = `sessionToken=${response.data.sessionToken}; path=/`;
           // Store session token in localStorage

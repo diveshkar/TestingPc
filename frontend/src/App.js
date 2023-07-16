@@ -10,6 +10,7 @@ import Quotation from './Component/Quotation';
 import Report from './Component/Report';
 import Register from './Component/Register';
 import Login from './Component/Login';
+import Profile from './Component/Profile';
 import Forgotpassword from './Component/Forgotpassword';
 
  function App() {
@@ -21,7 +22,8 @@ import Forgotpassword from './Component/Forgotpassword';
         <Nav/>
       </div>
         <Routes>
-          <Route exact path ='/Home' element={<Homepage/>}/>
+          <Route exact path ='/' element={<Homepage/>}/>
+          <Route exact path ='/home' element={<Homepage/>}/>
           <Route exact path ='/order' element={<Order/>}/>
           <Route exact path ='/payment' element={<Payment/>}/>
           <Route exact path ='/purchase' element={<Purchase/>}/>
@@ -31,6 +33,7 @@ import Forgotpassword from './Component/Forgotpassword';
           <Route exact path ='/forgotpassword' element={<Forgotpassword/>}/>
           <Route exact path ='/register' element={<Register/>}/>
           <Route exact path ='/login' element={<Login/>}/>
+          <Route exact path ='/profile' element={<Profile/>}/>
         </Routes>
 
         
