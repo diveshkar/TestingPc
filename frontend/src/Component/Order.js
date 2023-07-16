@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import './order.css';
 import orderImg from './images/order.jpg';
 import axios from 'axios';
-// import Homepage from './Homepage';
+// import Quotation from './Quotation';
+// import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Order() {
+  
+  const navigate = useNavigate();
   const [formdata , setFormdata] = useState({
     tests: "",
     parameters: "",
@@ -16,6 +20,12 @@ function Order() {
     sampleDisposition:"",
     agree: false,
   });
+  // const [quotation , setQuotation] = useState({});
+  // useEffect(() => {
+  //   if (Object.keys(quotation).length > 0) {
+  //     window.location.href = '/quotation';
+  //   }
+  // }, [quotation]);
   const Change = (e) => {
     if (e.target.type === 'checkbox') {
       setFormdata({ ...formdata, [e.target.id]: e.target.checked });
@@ -34,11 +44,17 @@ function Order() {
       Email: localStorage.getItem('Email')
     }).then(function(response) {
       console.log(response);
+      // setQuotation(response.data.quotation);
+      // console.log(quotation);
       if(response.data.success) {
         // window.location.href = '/purchase';
         window.alert("order submited");
+        const quotationData = response.data.quotation;
+        // setQuotation(quotationData);
+        navigate('/quotation', { state: { quotation: quotationData } });
+        // console.log(quotation);
         // console.log(formdata);
-        window.location.reload();
+        // window.location.reload();
       }
     })
     .catch(function(error){
@@ -165,8 +181,7 @@ function Order() {
   <input type="submit"  class="btn-submit-order" value="Submit"></input>
     </form>
   </div>
-          </div>
-          
+          </div>  
         </section>
       </div>
     )

@@ -31,6 +31,8 @@ import Forgotpassword from './Component/Forgotpassword';
           <Route exact path ='/forgotpassword' element={<Forgotpassword/>}/>
           <Route exact path ='/register' element={<Register/>}/>
           <Route exact path ='/login' element={<Login/>}/>
+          <Route exact path ='/quotation' element={<Quotation/>}/>
+
         </Routes>
 
         

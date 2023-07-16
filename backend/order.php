@@ -117,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Create a quotation.
     $quotation = [
         'success' => true,
+        'quotation' => [
         'username' => $data['Username'],
         'tests' => $tests,
         'parameters' => $parameters,
@@ -126,8 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'sampleType' => $sampleType,
         'hazardous' => $hazardous,
         'sampleDisposition' => $sampleDisposition,
-        'total_price' => $total_price,
+        'total_price' => $total_price . "LKR",
         'discounted_price' => $discounted_price,
+        ] 
     ];
 
     // Save the quotation to the database.
