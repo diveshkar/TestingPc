@@ -1,0 +1,141 @@
+.container_Ab {
+    display: flex;
+    margin-top: 2vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Avb_Req{
+    font-size:5VH ;
+    font-weight: bold;
+    text-align: left;
+    margin-top: -45px;
+    color: black;
+} 
+
+.back-button{
+    background-color: rgb(255, 222, 222);
+    margin-top: 40px;
+    margin-left: 90%;
+    height: 30px; 
+    width: 70px;
+  }
+
+  .left-pane {
+    width: 30%;
+    background-color: lightblue;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    height: 50vh;
+    color: black;
+  
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+  
+  .row.active {
+    background-color: lightgray;
+  }
+  
+  .right-pane {
+    
+    height: 83vh;
+    background-color: rgb(150, 234, 150);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    color: black;
+  }
+
+  .right-pane .popup-container_Con {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0vh;
+    margin-left: 5vw;
+    background-color: rgb(185, 150, 218);
+    height:50vh;
+    width: 30vw;
+  }
+
+  .right-pane .popup-container_Reg {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0vh;
+    margin-left: 5vw;
+    background-color: rgb(185, 150, 218);
+    height:40vh;
+    width: 25vw;
+  }
+
+  .right-pane .Click_con{
+    border-radius: 10px;
+    background-color: aqua;
+    margin-top: 10vh;
+    
+  }
+
+  .Pop_Title{
+    font-size: 3vh;
+    margin-top: 2vh ;
+  }
+  
+  
+  .popup-container_Con label {
+    margin-top: 20px;
+   
+  }
+  
+  .popup-container_Con button {
+    margin-bottom: -10vh;
+    margin-left: 10vw;
+    height: 5vh;
+    width:10vw ;
+  }
+
+  .horizontal-buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top :40%;
+    margin-left: 10%;
+    height: 5vh;
+    width: 20vw;
+    gap: 5vw;
+  }
+
+  .horizontal-buttons .Reject-btn{ 
+   height: 5vh;
+   width: 8vw;
+   border-radius: 10%;
+   background-color: rgb(245, 79, 79); 
+  }
+
+  .horizontal-buttons .Cancel-btn{ 
+    height: 5vh;
+    width: 15vw;
+    border-radius: 10%;
+    background-color: rgb(106, 240, 146); 
+   }
+
+  .button-container {
+
+    display: flex;
+    justify-content: flex-end;
+    margin-top :-5%;
+    margin-right: 10%;
+  }
+  
+  .button-container .accept-button, .reject-button {
+    margin-left: 30vw;
+    height: 5vh;
+    width: 8vw;
+    background-color: rgb(255, 196, 228);
+    border-radius: 15%;
+  }

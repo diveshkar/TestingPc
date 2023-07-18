@@ -1,0 +1,48 @@
+.container {
+    height: 100px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    
+  }
+
+  body {
+    background-image: url(./images/register.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+  .container .ab{
+    height: 100px;
+    width: 700px;
+    border-radius: 10px;
+    background-color: #63aa90;
+  }
+  
+  
+  
+  .container .right-side {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+    font-family: sans-serif;
+    font-weight: lighter;
+    margin-top: 20px;
+
+  }
+  .container .paragraph-div-home{
+    font-size: 25px;
+    padding-left: center;
+  }
+
+
+
+ 
+
+  
