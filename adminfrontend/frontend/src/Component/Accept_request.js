@@ -14,7 +14,7 @@ function Accept_request() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost/react/avireq.php');
+      const response = await axios.get('http://localhost/TestingPc/adminbackend/avireq.php');
       setEmployees(response.data);
     } catch (error) {
       console.log(error);
@@ -35,8 +35,29 @@ function Accept_request() {
                  email:'',
                  website:''
               })
-
-
+              const acceptRequest = async (orderId) => {
+                try {
+                  const response = await axios.post('http://localhost/TestingPc/adminbackend/accpetclick.php', {
+                    orderId: orderId,
+                  });
+                  console.log(response.data); // Handle the response from the backend
+                  fetchData(); // Fetch updated data after accepting the request
+                } catch (error) {
+                  console.log(error);
+                }
+              };
+            
+              const rejectRequest = async (orderId) => {
+                try {
+                  const response = await axios.post('http://localhost/TestingPc/adminbackend/rejectclick.php', {
+                    orderId: orderId,
+                  });
+                  console.log(response.data); // Handle the response from the backend
+                  fetchData(); // Fetch updated data after rejecting the request
+                } catch (error) {
+                  console.log(error);
+                }
+              };
   return (
     <div className="container_Acc">
 
@@ -52,12 +73,16 @@ function Accept_request() {
         
                   <th>orderID</th>
                   <th>tests</th>
+                  <th> username</th>
                   <th>parameters</th>
                   <th>sampleName</th>
                   <th>sampleType</th>
                   <th>sampleDisposition</th>
                   <th>Upload File</th>
                   <th>payment</th>
+                  <th>status</th>
+                  <th>accpet request</th>
+                  <th> reject request </th>
                 </thead>
               <tbody >
           
@@ -65,12 +90,24 @@ function Accept_request() {
           <tr  key={employee.id}>
             <td>{employee.orderID}</td>
             <td>{employee.tests}</td>
+            <td>{employee.username}</td>
             <td>{employee.parameters}</td>
             <td>{employee.sampleName}</td>
             <td>{employee.sampleType}</td>
             <td>{employee.sampleDisposition}</td>
             <td><button type="button" class="btn btn-secondary" onClick={Fwd_Pay}>Upload</button></td>
             <td><button class="btn btn-primary" onClick={(e)=>fetchData(employee.id)} data-toggle="modal" data-target="#myModal">Get Details</button></td>
+            <td>{employee.status}</td>
+            <td>
+            <button className="btn btn-success" onClick={() => acceptRequest(employee.orderID)}>
+             Accept
+            </button>
+            </td>
+            <td>
+            <button className="btn btn-danger" onClick={() => rejectRequest(employee.orderID)}>
+              Reject
+             </button>
+            </td>
           
           </tr>
         ))}

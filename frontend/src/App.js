@@ -27,7 +27,7 @@ import Forgotpassword from './Component/Forgotpassword';
           <Route exact path ='/payment' element={<Payment/>}/>
           <Route exact path ='/purchase' element={<Purchase/>}/>
           <Route exact path ='/contact' element={<Contact/>}/>
-          <Route exact path ='/quotation' element={<Quotation/>}/>
+          {/* <Route exact path ='/quotation' element={<Quotation/>}/> */}
           <Route exact path ='/report' element={<Report/>}/>
           <Route exact path ='/forgotpassword' element={<Forgotpassword/>}/>
           <Route exact path ='/register' element={<Register/>}/>

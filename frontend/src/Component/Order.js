@@ -51,7 +51,7 @@ function Order() {
         window.alert("order submited");
         const quotationData = response.data.quotation;
         // setQuotation(quotationData);
-        navigate('/quotation', { state: { quotation: quotationData } });
+        window.location.href = "purchase";
         // console.log(quotation);
         // console.log(formdata);
         // window.location.reload();

@@ -21,6 +21,7 @@ function Purchase() {
     window.alert(error);
   })
   
+  
 if(document.cookie.includes('sessionToken')){
   return (
     <div>
@@ -28,35 +29,25 @@ if(document.cookie.includes('sessionToken')){
       <table className="table">
         <thead>
           <tr className='font'>
-            <th>Order ID</th>
+            <th>Date & Time</th>
             <th>Username</th>
             <th>Tests</th>
-            <th>Parameters</th>
-            <th>Sample Name</th>
-            <th>Shelf Life</th>
-            <th>Storage</th>
-            <th>Sample Type</th>
-            <th>Hazardous</th>
-            <th>Sample Disposition</th>
-            <th>Agree</th>
-            <th>Created At</th>
+            <th>Email</th>
+            <th>Total Price</th>
+            <th>Discount Price</th>
+            <th>status</th>
           </tr>
         </thead>
         <tbody>
           {orders.map(order => (
-            <tr key={order.orderID}>
-              <td>{order.orderID}</td>
+            <tr key={order.x}>
+              <td>{order.created_at}</td>
               <td>{order.username}</td>
               <td>{order.tests}</td>
-              <td>{order.parameters}</td>
-              <td>{order.sampleName}</td>
-              <td>{order.shelfLife}</td>
-              <td>{order.storage}</td>
-              <td>{order.sampleType}</td>
-              <td>{order.hazardous}</td>
-              <td>{order.sampleDisposition}</td>
-              <td>{order.agree ? 'Yes' : 'No'}</td>
-              <td>{order.created_at}</td>
+              <td>{order.email}</td>
+              <td>{order.total_price} LKR</td>
+              <td>{order.discounted_price}  LKR</td>
+              <td>{order.status}</td>
             </tr>
           ))}
         </tbody>

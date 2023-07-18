@@ -47,9 +47,9 @@ const Nav = () => {
         <Link to="/contact" className="nav-item">
           <img src={contactIcon} className="nav-icon" alt="contact-icon" />
         </Link>
-        <Link to="/quotation" className="nav-item">
-          <img src={quotationIcon} className="nav-icon" alt="quotation-icon" />
-        </Link>
+        {/* <Link to="/quotation" className="nav-item"> */}
+          {/* <img src={quotationIcon} className="nav-icon" alt="quotation-icon" /> */}
+        {/* </Link> */}
         <Link to="/report" className="nav-item">
           <img src={reportIcon} className="nav-icon" alt="report-icon" />
         </Link>
