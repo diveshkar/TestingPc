@@ -56,9 +56,9 @@ function Login() {
       });
   };
 
-  if (document.cookie.includes('sessionToken')) {
-    window.location.href = '/order';
-  } else {
+  // if (document.cookie.includes('sessionToken')) {
+  //   window.location.href = '/order';
+  // } else {
     return (
       <div>
         <section>
@@ -117,6 +117,6 @@ function Login() {
       </div>
     );
   }
-}
+// }
 
 export default Login;
